@@ -7,7 +7,24 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           echo "$PATH"
-
+          ls /home/linuxbrew/.linuxbrew/bin
+          ls /home/linuxbrew/.linuxbrew/sbin
+          ls /home/runner/.local/bin
+          ls /opt/pipx_bin
+          ls /home/runner/.cargo/bin
+          ls /home/runner/.config/composer/vendor/bin
+          ls /usr/local/.ghcup/bin
+          ls /home/runner/.dotnet/tools
+          ls /snap/bin
+          ls /usr/local/sbin
+          ls /usr/local/bin
+          ls /usr/sbin
+          ls /usr/bin
+          ls /sbin
+          ls /bin
+          ls /usr/games
+          ls /usr/local/games
+          ls /snap/bin
   test:
     runs-on: ubuntu-latest
     strategy:
