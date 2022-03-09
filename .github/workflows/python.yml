@@ -38,9 +38,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Test with coverage
+      - name: Setup test environment
         run: |
           if [ -f setup_test.sh ]; then bash setup_test.sh; fi
+      - name: Test with coverage
+        run: |
           coverage run -m pytest tests
       - name: Run Python
         run: |
