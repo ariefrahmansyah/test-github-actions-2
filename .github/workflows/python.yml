@@ -22,15 +22,6 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.8", "3.9", "3.10"]
-    services:
-      postgres:
-        image: postgres:11.5-alpine
-        env:
-          POSTGRES_DB: db_name
-          POSTGRES_USER: username
-          POSTGRES_PASSWORD: password
-        ports:
-          - 5432:5432
     steps:
       - uses: actions/checkout@v2
       - name: Set up postgres (linux)
