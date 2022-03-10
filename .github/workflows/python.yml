@@ -30,7 +30,6 @@ jobs:
         run: |
           sudo systemctl start postgresql.service
           pg_isready
-          echo "PostgreSQL service is ready"
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -53,7 +52,7 @@ jobs:
           if [ -f setup_test.sh ]; then bash setup_test.sh; fi
       - name: Test with coverage
         run: |
-          coverage run -m pytest tests
+          coverage run -m pytest -s tests
       - name: Run Python
         run: |
           python hello.py
