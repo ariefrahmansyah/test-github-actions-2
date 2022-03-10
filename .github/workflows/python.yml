@@ -40,6 +40,9 @@ jobs:
           path: ~/.cache/pip
           # Look to see if there is a cache hit for the corresponding requirements files
           key: ${{ format('{0}-python-{1}', runner.os, matrix.python-version) }}
+      - name: Print environments
+        run: |
+          env
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
