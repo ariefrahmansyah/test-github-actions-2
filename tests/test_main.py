@@ -10,7 +10,7 @@ def prepare_db():
     setup_db_script = os.path.join(dir_path, "setup_db.sh")
 
     print("preparing db")
-    subprocess.run(setup_db_script)
+    subprocess.call(["sudo", setup_db_script])
     print("db is ready")
     yield
 
