@@ -24,35 +24,14 @@ jobs:
         python-version: ["3.8", "3.9", "3.10"]
     steps:
       - uses: actions/checkout@v2
-      - name: Set up postgres (linux)
-        if: runner.os == 'Linux' && matrix.python-version == '3.10'
-        shell: bash
-        run: |
-          sudo systemctl start postgresql.service
-          pg_isready
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Cache pip
-        uses: actions/cache@v2
-        with:
-          # This path is specific to Ubuntu
-          path: ~/.cache/pip
-          # Look to see if there is a cache hit for the corresponding requirements files
-          key: ${{ format('{0}-python-{1}', runner.os, matrix.python-version) }}
-      - name: Print environments
-        run: |
-          env
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-      - name: Setup test environment
-        run: |
-          if [ -f setup_test.sh ]; then bash setup_test.sh; fi
-      - name: Test with coverage
-        run: |
-          coverage run -m pytest -s tests
+          pip install pipenv
+          pipenv install --skip-lock
       - name: Run Python
         run: |
           python hello.py
