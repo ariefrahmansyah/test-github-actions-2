@@ -17,6 +17,9 @@ jobs:
         run: |
           pip install --user pipenv
           pipenv install --skip-lock
-      - name: Run Pytest
+      - name: Run Pipenv-Pytest
         run: |
           pipenv run pytest
+      - name: Run Pytest
+        run: |
+          pytest
