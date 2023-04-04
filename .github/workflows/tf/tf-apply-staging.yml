@@ -9,7 +9,7 @@ on:
 
 jobs:
   tf-apply:
-    uses: ./.github/workflows/tf-apply.yml
+    uses: ./.github/workflows/tf/tf-apply.yml
     with:
       path: environment/staging/bigquery
       environment: staging
