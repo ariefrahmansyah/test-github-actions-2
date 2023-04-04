@@ -7,88 +7,21 @@ env:
 
 jobs:
   staging-bigquery-plan:
-    uses: ./.github/workflows/tf-plan.yml
+    uses: ./.github/workflows/tf/tf-plan.yml
     with:
       path: environment/staging/bigquery
 
   staging-gcs-plan:
-    uses: ./.github/workflows/tf-plan.yml
+    uses: ./.github/workflows/tf/tf-plan.yml
     with:
       path: environment/staging/gcs
-    # runs-on: ubuntu-22.04
-    # steps:
 
-    #   - uses: hashicorp/setup-terraform@v2
-    #     with:
-    #       terraform_version: ${{ env.TERRAFORM_VERSION }}
+  staging-bigquery-apply:
+    uses: ./.github/workflows/tf/tf-apply-staging.yml
+    with:
+      path: environment/staging/bigquery
 
-    #   - name: terraform init
-    #     run: echo "terraform init"
-
-    #   - name: terraform plan
-    #     run: echo "terraform plan 1" > terraform.plan
-
-    #   - name: upload terraform.plan
-    #     uses: actions/upload-artifact@v3
-    #     with:
-    #       name: terraform.plan
-    #       path: terraform.plan
-
-  # tf-apply-staging-1:
-  #   runs-on: ubuntu-22.04
-  #   needs: tf-plan-staging-1
-  #   environment: staging
-  #   steps:
-  #     - uses: hashicorp/setup-terraform@v2
-  #       with:
-  #         terraform_version: ${{ env.TERRAFORM_VERSION }}
-
-  #     - name: download terraform.plan
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: terraform.plan
-
-  #     - name: terraform init
-  #       run: echo "terraform init"
-
-  #     - name: see terraform plan
-  #       run: cat terraform.plan
-
-  # tf-plan-staging-2:
-  #   runs-on: ubuntu-22.04
-  #   steps:
-  #     - uses: hashicorp/setup-terraform@v2
-  #       with:
-  #         terraform_version: ${{ env.TERRAFORM_VERSION }}
-
-  #     - name: terraform init
-  #       run: echo "terraform init"
-
-  #     - name: terraform plan
-  #       run: echo "terraform plan 2" > terraform.plan
-
-  #     - name: upload terraform.plan
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: terraform.plan
-  #         path: terraform.plan
-
-  # tf-apply-staging-2:
-  #   runs-on: ubuntu-22.04
-  #   needs: tf-plan-staging-2
-  #   environment: staging
-  #   steps:
-  #     - uses: hashicorp/setup-terraform@v2
-  #       with:
-  #         terraform_version: ${{ env.TERRAFORM_VERSION }}
-
-  #     - name: download terraform.plan
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: terraform.plan
-
-  #     - name: terraform init
-  #       run: echo "terraform init"
-
-  #     - name: see terraform plan
-  #       run: cat terraform.plan
+  staging-gcs-apply:
+    uses: ./.github/workflows/tf/tf-apply-staging.yml
+    with:
+      path: environment/staging/gcs

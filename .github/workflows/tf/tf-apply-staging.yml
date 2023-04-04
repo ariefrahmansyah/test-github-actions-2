@@ -1,0 +1,15 @@
+name: Terraform Apply
+
+on:
+  workflow_call:
+    inputs:
+      path:
+        required: true
+        type: string
+
+jobs:
+  tf-apply:
+    uses: ./.github/workflows/tf-apply.yml
+    with:
+      path: environment/staging/bigquery
+      environment: staging

@@ -1,4 +1,4 @@
-name: Terraform Plan
+name: Terraform Apply
 
 on:
   workflow_call:
@@ -6,9 +6,13 @@ on:
       path:
         required: true
         type: string
+      environment:
+        required: true
+        type: string
 
 jobs:
-  tf-plan:
+  tf-apply:
+    environment: ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,12 +24,9 @@ jobs:
       - name: terraform init
         run: echo "terraform init"
 
-      - name: terraform plan
-        run: |
-          echo "terraform plan: ${{ inputs.path }}" > ${{ inputs.path }}/terraform.plan
+      - name: download terraform.plan
+        uses: actions/download-artifact@v3
 
-      - name: upload terraform.plan
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ inputs.path }}-plan
-          path: ${{ inputs.path }}/terraform.plan
+      - name: terraform apply
+        run: |
+          cat ${{ inputs.path }}/terraform.plan
