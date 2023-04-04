@@ -17,11 +17,13 @@ jobs:
       path: environment/staging/gcs
 
   staging-bigquery-apply:
+    needs: staging-bigquery-plan
     uses: ./.github/workflows/tf-apply-staging.yml
     with:
       path: environment/staging/bigquery
 
   staging-gcs-apply:
+    needs: staging-gcs-plan
     uses: ./.github/workflows/tf-apply-staging.yml
     with:
       path: environment/staging/gcs
