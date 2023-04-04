@@ -6,7 +6,7 @@ env:
   TERRAFORM_VERSION: 1.4.2
 
 jobs:
-  tf-plan-staging:
+  tf-staging:
     runs-on: ubuntu-22.04
     steps:
       - uses: hashicorp/setup-terraform@v2
@@ -14,16 +14,23 @@ jobs:
           terraform_version: ${{ env.TERRAFORM_VERSION }}
 
       - name: terraform init
-        run: terraform init
+        run: echo "terraform init"
 
-  tf-apply-staging:
-    runs-on: ubuntu-22.04
-    needs: tf-plan-staging
-    environment: staging
-    steps:
-      - uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: ${{ env.TERRAFORM_VERSION }}
+      - name: terraform plan
+        run: echo "terraform plan"
 
-      - name: terraform init
-        run: terraform init
+      - name: terraform apply
+        run: echo "terraform apply"
+        if: github.ref == 'refs/heads/main'
+
+  # tf-apply-staging:
+  #   runs-on: ubuntu-22.04
+  #   needs: tf-plan-staging
+  #   environment: staging
+  #   steps:
+  #     - uses: hashicorp/setup-terraform@v2
+  #       with:
+  #         terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+  #     - name: terraform init
+  #       run: terraform init
