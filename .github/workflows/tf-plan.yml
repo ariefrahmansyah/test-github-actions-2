@@ -20,7 +20,9 @@ jobs:
 
       - name: terraform plan
         run: |
-          echo "terraform plan: ${{ inputs.path }}" > ${{ inputs.path }}/terraform.plan
+          pwd
+          ls
+          echo "terraform plan: ${{ inputs.path }}" >> ${{ inputs.path }}/terraform.plan
 
       - name: upload terraform.plan
         uses: actions/upload-artifact@v3
