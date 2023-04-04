@@ -7,21 +7,21 @@ env:
 
 jobs:
   staging-bigquery-plan:
-    uses: ./.github/workflows/tf/tf-plan.yml
+    uses: ./.github/workflows/tf-plan.yml
     with:
       path: environment/staging/bigquery
 
   staging-gcs-plan:
-    uses: ./.github/workflows/tf/tf-plan.yml
+    uses: ./.github/workflows/tf-plan.yml
     with:
       path: environment/staging/gcs
 
   staging-bigquery-apply:
-    uses: ./.github/workflows/tf/tf-apply-staging.yml
+    uses: ./.github/workflows/tf-apply-staging.yml
     with:
       path: environment/staging/bigquery
 
   staging-gcs-apply:
-    uses: ./.github/workflows/tf/tf-apply-staging.yml
+    uses: ./.github/workflows/tf-apply-staging.yml
     with:
       path: environment/staging/gcs
