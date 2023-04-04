@@ -34,4 +34,5 @@ jobs:
           pwd
           ls -lah
           ls -lah ${{ inputs.path }}
-          cat ${{ inputs.path }}/terraform.plan
+          ls -lah output
+          cat output/${{ inputs.path }}/terraform.plan
