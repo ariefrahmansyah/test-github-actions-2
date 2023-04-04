@@ -1,0 +1,28 @@
+name: Terraform Plan
+
+on:
+  workflow_call:
+    inputs:
+      path:
+        required: true
+        type: string
+
+jobs:
+  tf-plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+      - name: terraform init
+        run: echo "terraform init"
+
+      - name: terraform plan
+        run: echo "terraform plan: ${{ inputs.path }}" > ${{ inputs.config-path }}/terraform.plan
+
+      - name: upload terraform.plan
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform.plan
+          path: ${{ inputs.config-path }}/terraform.plan
