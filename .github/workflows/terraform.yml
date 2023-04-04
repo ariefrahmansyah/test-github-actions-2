@@ -6,13 +6,13 @@ env:
   TERRAFORM_VERSION: 1.4.2
 
 jobs:
-  plan-staging-bigquery:
-    uses: ariefrahmansyah/test-github-actions-2/.github/workflows/tf-plan.yml@terraform
+  staging-bigquery-plan:
+    uses: ./.github/workflows/tf-plan.yml@terraform
     with:
       path: bigquery
 
-  plan-staging-gcs:
-    uses: ariefrahmansyah/test-github-actions-2/.github/workflows/tf-plan.yml@terraform
+  staging-gcs-plan:
+    uses: ./.github/workflows/tf-plan.yml@terraform
     with:
       path: gcs
     # runs-on: ubuntu-22.04
