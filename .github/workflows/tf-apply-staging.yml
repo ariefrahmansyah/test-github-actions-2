@@ -11,5 +11,5 @@ jobs:
   tf-apply:
     uses: ./.github/workflows/tf-apply.yml
     with:
-      path: environment/staging/bigquery
+      path: ${{ inputs.path }}
       environment: staging
