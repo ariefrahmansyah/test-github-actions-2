@@ -9,12 +9,12 @@ jobs:
   staging-bigquery-plan:
     uses: ./.github/workflows/tf-plan.yml
     with:
-      path: bigquery
+      path: environment/staging/bigquery
 
   staging-gcs-plan:
     uses: ./.github/workflows/tf-plan.yml
     with:
-      path: gcs
+      path: environment/staging/gcs
     # runs-on: ubuntu-22.04
     # steps:
 
