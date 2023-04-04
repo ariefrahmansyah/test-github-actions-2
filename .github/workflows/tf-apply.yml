@@ -33,4 +33,5 @@ jobs:
         run: |
           pwd
           ls -lah
+          ls -lah ${{ inputs.path }}
           cat ${{ inputs.path }}/terraform.plan
