@@ -7,12 +7,12 @@ env:
 
 jobs:
   staging-bigquery-plan:
-    uses: ./.github/workflows/tf-plan.yml@terraform
+    uses: ./.github/workflows/tf-plan.yml
     with:
       path: bigquery
 
   staging-gcs-plan:
-    uses: ./.github/workflows/tf-plan.yml@terraform
+    uses: ./.github/workflows/tf-plan.yml
     with:
       path: gcs
     # runs-on: ubuntu-22.04
