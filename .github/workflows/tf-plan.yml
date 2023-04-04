@@ -11,6 +11,8 @@ jobs:
   tf-plan:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ${{ env.TERRAFORM_VERSION }}
@@ -21,7 +23,7 @@ jobs:
       - name: terraform plan
         run: |
           pwd
-          ls
+          ls -lah
           echo "terraform plan: ${{ inputs.path }}" >> ${{ inputs.path }}/terraform.plan
 
       - name: upload terraform.plan
