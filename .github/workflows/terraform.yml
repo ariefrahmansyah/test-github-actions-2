@@ -22,15 +22,3 @@ jobs:
       - name: terraform apply
         run: echo "terraform apply"
         if: github.ref == 'refs/heads/main'
-
-  # tf-apply-staging:
-  #   runs-on: ubuntu-22.04
-  #   needs: tf-plan-staging
-  #   environment: staging
-  #   steps:
-  #     - uses: hashicorp/setup-terraform@v2
-  #       with:
-  #         terraform_version: ${{ env.TERRAFORM_VERSION }}
-
-  #     - name: terraform init
-  #       run: terraform init
