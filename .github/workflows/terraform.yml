@@ -1,0 +1,33 @@
+name: Terraform
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+env:
+  TERRAFORM_VERSION: 1.4.2
+
+jobs:
+  tf-plan-staging:
+    runs-on: ubuntu-22.04
+    environment: staging
+    steps:
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+      - name: terraform init
+        run: terraform init
+
+  tf-apply-staging:
+    runs-on: ubuntu-22.04
+    environment: staging
+    steps:
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+      - name: terraform init
+        run: terraform init
