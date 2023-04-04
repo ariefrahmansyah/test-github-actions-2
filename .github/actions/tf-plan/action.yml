@@ -1,0 +1,30 @@
+name: Terraform Plan
+
+inputs:
+  path:
+    description: Path to directory that contains Terraform code
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+
+    - uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+    - shell: bash
+      run: echo "terraform init"
+
+    - name: terraform plan
+      shell: bash
+      run: |
+        echo "terraform plan: ${{ inputs.path }}" >
+        cat ${{ inputs.path }}/terraform.plan
+
+    - name: upload terraform.plan
+      uses: actions/upload-artifact@v3
+      with:
+        name: terraform-plan-artifact
+        path: ${{ inputs.path }}/terraform.plan
