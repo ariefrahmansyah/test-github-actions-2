@@ -8,7 +8,6 @@ env:
 jobs:
   tf-plan-staging:
     runs-on: ubuntu-22.04
-    environment: staging
     steps:
       - uses: hashicorp/setup-terraform@v2
         with:
@@ -19,6 +18,7 @@ jobs:
 
   tf-apply-staging:
     runs-on: ubuntu-22.04
+    needs: tf-plan-staging
     environment: staging
     steps:
       - uses: hashicorp/setup-terraform@v2
