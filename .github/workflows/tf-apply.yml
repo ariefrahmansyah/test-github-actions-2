@@ -31,4 +31,6 @@ jobs:
 
       - name: terraform apply
         run: |
+          pwd
+          ls -lah
           cat ${{ inputs.path }}/terraform.plan
