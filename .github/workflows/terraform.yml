@@ -7,7 +7,7 @@ env:
 
 jobs:
   staging-bigquery-plan:
-    uses: ./.github/actions/tf-plan
+    uses: ./.github/actions/tf-plan/action.yml
     with:
       path: environment/staging/bigquery
 
