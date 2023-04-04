@@ -11,22 +11,24 @@ jobs:
   tf-plan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: hashicorp/setup-terraform@v2
+      - uses: ./.github/actions/tf-plan
         with:
-          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          path: ${{ inputs.path }}
 
-      - name: terraform init
-        run: echo "terraform init"
+      # - uses: hashicorp/setup-terraform@v2
+      #   with:
+      #     terraform_version: ${{ env.TERRAFORM_VERSION }}
 
-      - name: terraform plan
-        run: |
-          echo "terraform plan: ${{ inputs.path }}" >
-          cat ${{ inputs.path }}/terraform.plan
+      # - name: terraform init
+      #   run: echo "terraform init"
 
-      - name: upload terraform.plan
-        uses: actions/upload-artifact@v3
-        with:
-          name: terraform-plan-artifact
-          path: ${{ inputs.path }}/terraform.plan
+      # - name: terraform plan
+      #   run: |
+      #     echo "terraform plan: ${{ inputs.path }}" >
+      #     cat ${{ inputs.path }}/terraform.plan
+
+      # - name: upload terraform.plan
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: terraform-plan-artifact
+      #     path: ${{ inputs.path }}/terraform.plan

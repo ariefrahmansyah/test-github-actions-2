@@ -1,4 +1,5 @@
 name: Terraform Plan
+description: Terraform Plan
 
 inputs:
   path:

@@ -7,9 +7,11 @@ env:
 
 jobs:
   staging-bigquery-plan:
-    uses: ./.github/actions/tf-plan/action.yml
-    with:
-      path: environment/staging/bigquery
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/tf-plan
+        with:
+          path: environment/staging/bigquery
 
   staging-gcs-plan:
     uses: ./.github/workflows/tf-plan.yml
