@@ -21,7 +21,7 @@ runs:
     - name: terraform plan
       shell: bash
       run: |
-        echo "terraform plan: ${{ inputs.path }}" >
+        echo "terraform plan: ${{ inputs.path }}" > ${{ inputs.path }}/terraform.plan
         cat ${{ inputs.path }}/terraform.plan
 
     - name: upload terraform.plan
