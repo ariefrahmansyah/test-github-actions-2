@@ -9,6 +9,7 @@ jobs:
   staging-bigquery-plan:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/tf-plan
         with:
           path: environment/staging/bigquery
