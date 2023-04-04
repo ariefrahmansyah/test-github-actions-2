@@ -26,6 +26,8 @@ jobs:
 
       - name: download terraform.plan
         uses: actions/download-artifact@v3
+        with:
+          name: terraform-plan-artifact
 
       - name: terraform apply
         run: |

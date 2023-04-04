@@ -27,4 +27,5 @@ jobs:
       - name: upload terraform.plan
         uses: actions/upload-artifact@v3
         with:
+          name: terraform-plan-artifact
           path: ${{ inputs.path }}/terraform.plan
